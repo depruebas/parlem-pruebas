@@ -1,0 +1,74 @@
+@media only screen and (min-width : 1450px)
+{
+  .container { max-width: 1450px; }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;360&display=swap');
+
+body
+{
+  /*background-color: #D1D3D5;*/
+
+  background-color: #D1D3D5;
+  font-family: 'Josefin Sans', sans-serif, arial;
+  font-size: 20px;
+}
+
+a
+{
+	text-decoration: none;
+	font-weight: bolder;
+	color: #000000;
+}
+
+a:hover
+{
+	color: #D1D3D5;
+}
+
+.table-hover tbody tr:hover
+{
+	background-color: #FFC107;
+	color: #000000;
+}
+
+.cnt-clientes
+{
+	margin-top: 30px;
+	border: 1px solid  #FFC107;
+
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 70px;
+	margin-bottom: 40px;
+}
+
+.btn-warning-mas
+{
+	background-color: #FFC107;
+	color: #ffffff;
+	width: 150px;
+}
+
+.cnt-producto
+{
+	margin-top: 30px;
+	border: 1px solid  #FFC107;
+
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 70px;
+}
+
+.rw-products
+{
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 70px;
+}
+
+.card-body
+{
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
