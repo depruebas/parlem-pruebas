@@ -27,7 +27,8 @@ Class CustomersModel
   public function ListProducts( $data = null)
   {
 
-  	$params['query'] = "SELECT * From Products Where customer_id = ?";
+  	$params['query'] = "SELECT id, productName,productTypeName,terminalNumber,sold_at,enabled,created_at
+                        From Products Where customer_id = ?";
     $params['params'] = array( $data);
 
     return ( PDOClass2::ExecuteQuery( $params));

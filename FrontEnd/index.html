@@ -20,7 +20,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <img src="https://m8y9e3z7.rocketcdn.me/wp-content/uploads//2020/06/logo.svg">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -38,14 +38,30 @@
   <!-- Page Content -->
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-        <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
-        <ul class="list-unstyled">
-          <li>Bootstrap 4.5.3</li>
-          <li>jQuery 3.5.1</li>
-        </ul>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-6">
+        <h3 class="mt-5">Listado de clientes</h3>
+        <p></p>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td align=center><b>id</b> </td>
+              <td align=center><b>docType</b> </td>
+              <td align=center><b>docNum</b> </td>
+              <td align=center><b>email</b> </td>
+              <td align=center><b>givenName</b> </td>
+              <td align=center><b>familyName</b> </td>
+              <td align=center><b>phone</b> </td>
+              <td align=center><b>created_at</b> </td>
+            </tr>
+          </thead>
+          <tbody  class="listClients">
+
+          </tbody>
+        </table>
+
       </div>
+      <div class="col-lg-2"></div>
     </div>
   </div>
 
@@ -56,27 +72,53 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <script>
-  $.getJSON('http://api.parlem.local/v1.0/Customers', function(result) {
 
-      console.log(result.data.data[0].id);
+      var tabla;
 
-      $.each( result.data.data, function( key, value ) {
+      $.getJSON('http://api.parlem.local/v1.0/Customers', function(result) {
 
-        console.log ( key);
+          console.log(result.data.data);
 
-        $.each( result.data.data[key], function( key1, value1 ) {
+          $.each( result.data.data, function( key, value ) {
 
-          console.log( key1 + ": " + value1 );
-        });
+            tabla += "<tr>";
 
+
+            $.each( result.data.data[key], function( key1, value1 ) {
+
+              if ( key1 == 'created_at')
+              {
+                var created_at = value1.split(" ");
+                var y = created_at[0].split("-");
+                value1 = y[2] + "/" + y[1] + "/" + y[0];
+              }
+
+              if ( key1 == 'id')
+              {
+                cliente_id = value1;
+                tabla += "<td><a href='products.html?id=" + cliente_id +"'>" + value1 + "</a></td>";
+              }
+              else
+              {
+                 if ( key1 != 'enabled')
+                    tabla += "<td>" + value1 + "</td>";
+              }
+
+              /*if ( key1 == 'givenName') tabla += "<td><a href='products.html?id=" + cliente_id +"'>" + value1 + "</a></td>";
+              if ( key1 == 'email') tabla += "<td>" + value1 + "</td>";
+              if ( key1 == 'created_at') tabla += "<td>" + value1 + "</td>";*/
+
+            });
+
+            tabla += "</tr>";
+          });
+
+          $(".listClients").html(tabla);
       });
 
-      $(".mypanel").html(text);
-  });
   </script>
 
 
-<div class="mypanel">AAAA</div>
 
 </body>
 
